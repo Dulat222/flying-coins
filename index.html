@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<style type="text/css">
+		.box1{
+			background: url(coin.png);
+			height: 30px;
+			width: 30px;
+			position: absolute;
+			transition: 1s;
+			left: 0px;
+			top: 0px;
+			background-size: 100%;
+		}
+		.box2{
+			background: url(coin.png);
+			height: 30px;
+			width: 30px;
+			position: absolute;
+			transition: 1s;
+			left: 0px;
+			top: 0px;
+			background-size: 100%;
+		}
+		.box3{
+			background: url(coin.png);
+			height: 30px;
+			width: 30px;
+			position: absolute;
+			transition: 1s;
+			left: 0px;
+			top: 0px;
+			background-size: 100%;
+		}
+		.box4{
+			background: url(coin.png);
+			height: 30px;
+			width: 30px;
+			position: absolute;
+			transition: 1s;
+			left: 0px;
+			top: 0px;
+			background-size: 100%;
+		}
+		.main{
+			background: white;
+			border: black solid 1px;
+			height: 900px;
+			width: 900px;
+			position: absolute;
+			left: 600px;
+
+		}
+		.btn{
+			margin-left: 0px;
+			margin-top: 10px;
+			height: 30px;
+			width: 150px;
+		}
+		.moremain{
+			height: 1000px;
+			width: 1800px;
+		}
+		.win{
+			text-align: center;
+			display: none;
+			margin-top: 400px;
+		}
+		.lose{
+			text-align: center;
+			display: none;
+			margin-top: 400px;
+		}
+	</style>
+</head>
+<body>
+<div class="moremain"> 
+	<div class="main">
+		<div class="box1"></div>
+		<div class="box2"></div>
+		<div class="box3"></div>
+		<div class="box4"></div>
+	</div>
+
+	<button class="btn">Начать</button>
+	<h1>Очки:<span class="score">0</span></h1>
+	<h1>Таймер: <span>00:<span class="timer">10</span></span></h1>
+</div>
+
+<h1 class="win">ТЫ ВЫИГРАЛ!!!</h1>
+<h1 class="lose">ТЫ ПРОИГРАЛ!!!</h1>
+
+
+<script type="text/javascript">
+	let box1 = document.querySelector('.box1')
+	let box2 = document.querySelector('.box2')
+	let box3 = document.querySelector('.box3')
+	let box4 = document.querySelector('.box4')
+	let btn = document.querySelector('.btn')
+	let score = 0
+	let moremain = document.querySelector('.moremain')
+	let win = document.querySelector('.win')
+	let lose = document.querySelector('.lose')
+	let timer = 10
+	let timerinterval;
+
+
+	function move(){
+		box1.style.left = getRandom() + 'px'
+		box1.style.top = getRandom() + 'px'
+		box2.style.left = getRandom() + 'px'
+		box2.style.top = getRandom() + 'px'
+		box3.style.left = getRandom() + 'px'
+		box3.style.top = getRandom() + 'px'
+		box4.style.left = getRandom() + 'px'
+		box4.style.top = getRandom() + 'px'
+		
+	}
+	function getRandom(){
+		return Math.round(Math.random()*800)
+	}
+
+	function time(){
+		timer = timer - 1
+		document.querySelector('.timer').innerHTML = timer
+
+		if(timer == 0){
+			moremain.style.display = 'none'
+			lose.style.display = 'block'
+		}
+	}
+
+	function stoptime(){
+		clearInterval(timerinterval)
+		
+	}	
+
+	btn.onclick = function(){
+		btn.onclick = null
+		timerinterval = setInterval(time, 1000)
+		setTimeout(stoptime, 10000)
+		setInterval(move, 1000)
+		
+
+	}
+
+
+
+
+	
+
+	box1.onclick = function(){
+		box1.style.display = 'none'
+		score = score + 1
+		timer = timer + 2
+		document.querySelector('.score').innerHTML = score
+		document.querySelector('.timer').innerHTML = timer
+
+		if(score == 4){
+			moremain.style.display = 'none'
+			win.style.display = 'block'
+		}
+	}
+	box2.onclick = function(){
+		box2.style.display = 'none'
+		score = score + 1
+		timer = timer + 2
+		document.querySelector('.score').innerHTML = score
+		document.querySelector('.timer').innerHTML = timer
+
+		if(score == 4){
+			moremain.style.display = 'none'
+			win.style.display = 'block'
+		}
+	}
+	box3.onclick = function(){
+		box3.style.display = 'none'
+		score = score + 1
+		timer = timer + 2
+		document.querySelector('.score').innerHTML = score
+		document.querySelector('.timer').innerHTML = timer
+
+		if(score == 4){
+			moremain.style.display = 'none'
+			win.style.display = 'block'
+		}
+	}
+	box4.onclick = function(){
+		box4.style.display = 'none'
+		score = score + 1
+		timer = timer + 2
+		document.querySelector('.score').innerHTML = score
+		document.querySelector('.timer').innerHTML = timer
+
+		if(score == 4){
+			moremain.style.display = 'none'
+			win.style.display = 'block'
+		}
+	}
+	
+
+
+
+	
+</script>
+</body>
+</html>
